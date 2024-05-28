@@ -22,19 +22,20 @@ namespace Api.Services
 
         public string CreateJWT(User user)
         {
-            var userClaims = new List<Claim>()
+            var userClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier , user.Id ),
-                new Claim(ClaimTypes.Email  , user.Email ),
-                new Claim(ClaimTypes.GivenName , user.FirstName),
-                new Claim(ClaimTypes.Surname , user.LastName)
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.GivenName, user.FirstName),
+                new Claim(ClaimTypes.Surname, user.LastName)
             };
 
-            var credentials = new SigningCredentials(_jwtKey, SecurityAlgorithms.HmacSha256Signature);
-            var tokenDescriptor = new SecurityTokenDescriptor()
+            var creadentials = new SigningCredentials(_jwtKey, SecurityAlgorithms.HmacSha512Signature);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(userClaims),
                 Expires = DateTime.UtcNow.AddDays(int.Parse(_configuration["JWT:ExpiresInDays"])),
+                SigningCredentials = creadentials,
                 Issuer = _configuration["JWT:Issuer"]
             };
 
