@@ -65,7 +65,7 @@ namespace Api.Controllers
             var result = await _userManager.CreateAsync(userToAdd, model.Password);
             if (!result.Succeeded) return BadRequest(result.Errors);
 
-            return Ok("Account created. You can login");
+            return Ok(new JsonResult(new { title = "Account created", Message = "Account created. You can login" }));
         }
 
         private async Task<bool> CheckEmailExists(string email)

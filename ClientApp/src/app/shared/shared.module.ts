@@ -5,13 +5,15 @@ import { ValidationMessagesComponent } from './components/errors/validation-mess
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NotificationComponent } from './components/models/notification/notification.component';
 
 
 
 @NgModule({
   declarations: [
     NotFoundComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     [
       RouterModule,
       ReactiveFormsModule,
-      HttpClientModule
+      HttpClientModule,
+      ValidationMessagesComponent
     ]
 })
 export class SharedModule { }
