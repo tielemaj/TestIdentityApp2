@@ -8,7 +8,7 @@ import { NotificationComponent } from './components/models/notification/notifica
 export class SharedService {
   bsModalRef?: BsModalRef;
 
-  constructor(private bsModelService: BsModalService) { }
+  constructor(private modalService: BsModalService) { }
 
   showNotification(isSuccess: boolean, title: string, message: string) {
     const initalState: ModalOptions = {
@@ -19,7 +19,6 @@ export class SharedService {
       }
     };
 
-    this.bsModalRef = this.bsModelService.show(NotificationComponent, initalState);
+    this.bsModalRef = this.modalService.show(NotificationComponent, initalState);
   }
-
 }

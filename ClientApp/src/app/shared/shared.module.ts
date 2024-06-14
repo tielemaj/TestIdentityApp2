@@ -5,8 +5,8 @@ import { ValidationMessagesComponent } from './components/errors/validation-mess
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { NotificationComponent } from './components/models/notification/notification.component';
-
 
 
 @NgModule({
@@ -19,14 +19,14 @@ import { NotificationComponent } from './components/models/notification/notifica
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
-  exports:
-    [
-      RouterModule,
-      ReactiveFormsModule,
-      HttpClientModule,
-      ValidationMessagesComponent
-    ]
+  exports: [
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ValidationMessagesComponent
+  ]
 })
 export class SharedModule { }
